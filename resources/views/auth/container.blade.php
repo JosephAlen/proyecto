@@ -1,53 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
     <title>DTMU | Activos Fijos</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
-    <!-- icons -->
-    <link href="assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    
- 
+    <!--STYLESHEET-->
+    <!--=================================================-->
+
+    <!--Open Sans Font [ OPTIONAL ]-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="{!! asset('assets/template/css/bootstrap.min.css') !!}" rel="stylesheet">
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="{!! asset('assets/template/css/nifty.min.css') !!}" rel="stylesheet">
+
+    <!--Nifty Premium Icon [ DEMONSTRATION ]-->
+    <link href="{!! asset('assets/template/css/demo/nifty-demo-icons.min.css') !!}" rel="stylesheet">
+
+     <!--Pace - Page Load Progress Par [OPTIONAL]-->
+    <link href="{!! asset('assets/template/plugins/pace/pace.min.css') !!}" rel="stylesheet">
+    <script src="{!! asset('assets/template/plugins/pace/pace.min.js') !!}"></script>
+        
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="{!! asset('assets/template/css/demo/nifty-demo.min.css') !!}" rel="stylesheet">
+        
 </head>
-<body background="img/fond.jpeg" style="background-size: cover;">
 
-    <div class="container">
-        @yield('login')
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+
+<body>
+    <div id="container" class="cls-container" style="display: flex; justify-content: center; margin-top: 50px; ">
+        
+        <!-- BACKGROUND IMAGE -->
+        <!--===================================================-->
+        <div id="bg-overlay"></div>
+        
+        
+        <!-- LOGIN FORM -->
+        <!--===================================================-->
+        @yield('auth')
+        <!--===================================================-->
+        
     </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+        
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+
+    <!--jQuery [ REQUIRED ]-->
+    <script src="{!! asset('assets/template/js/jquery.min.js') !!}"></script>
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="{!! asset('assets/template/js/bootstrap.min.js') !!}"></script>
+
+
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="{!! asset('assets/template/js/nifty.min.js') !!}"></script>
+
+    <!--=================================================-->
     
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--Background Image [ DEMONSTRATION ]-->
+    <script src="{!! asset('assets/template/js/demo/bg-images.js') !!}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-
-
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/pace.min.js')}}"></script>
-    <!-- Plugins and scripts required by all views -->
-    <script src="{{asset('js/Chart.min.js')}}"></script>
-    <!-- GenesisUI main scripts -->
-    <script src="{{asset('js/template.js')}}"></script>
-    
 </body>
 </html>

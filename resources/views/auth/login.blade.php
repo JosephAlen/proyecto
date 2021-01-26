@@ -1,50 +1,37 @@
 @extends('auth.container')
 
-@section('login')
-<div class="row justify-content-center">
-    <div class="col-xl-15 col-lg-12 col-md-9">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block ">
-                <img src="img/seguridad.png" alt="" style="width: 600px; height: 450px;">
-              </div>
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="text-gray-900 mb-4">Iniciar Sesion</h1>
-                  </div>
-                  <hr>
+@section('auth')
+    <div class="cls-content">
+        <div class="cls-content-sm panel">
+            <div class="panel-body" style="background-color: white;border-radius: 10px;">
+                <div class="mar-ver pad-btm" style="padding-bottom: 0px;">
+
+                    <img src="img/seguridad.png" alt="" style="width: 100%; height: 100%;">
+                    <h1 class="h3">Iniciar Sesión</h1>
+
+                </div>
                   <form class="user was-validated" method="POST" action="{{route('login')}}">
                     {{csrf_field()}}
-
-                    <div class="form-group mb-3{{$errors->has('user' ? 'is-invalid' : '')}}" style="margin-bottom: 30px; margin-top: 30px;">
-                      <input type="text" class="form-control form-control-user" value="{{old('user')}}" name="user" id="user" placeholder="Introduzca su Usuario..." style="border-color: black; background-image: none;">
-
+                    <div class="form-group {{$errors->has('user' ? 'is-invalid' : '')}}">
+                        <label class="col-md-3 control-label"><b>Usuario:</b></label>
+                        <input type="text" value="{{old('user')}}" class="form-control" name="user" id="user" placeholder="Ingresar Usuario" autofocus="">
                     </div>
-                    
-
-                    <div class="form-group mb-4{{$errors->has('password' ? 'is-invalid' : '')}}" style="margin-bottom: 30px; margin-top: 30px;">
-                      <input type="password" name="password" id="password" class="form-control form-control-user" placeholder="Introduzca su Contraseña..." style="border-color: black;background-image: none;">
-                      
-                      {!!$errors->first('user','<span class="invalid-feedback">Usuario y/o Contraseña Incorrecta</span>')!!}
-                      {!!$errors->first('password','<span class="invalid-feedback">Usuario y/o Contraseña Incorrecta</span>')!!} 
+                    <div class="form-group {{$errors->has('password' ? 'is-invalid' : '')}}">
+                        <label class="col-md-3 control-label"><b>Contraseña:</b></label>
+                        <input type="password" name="password" id="password"  class="form-control" placeholder="Ingresar Contraseña">
                     </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">INGRESAR</button>
 
-                    <hr>
-
-                    <div class="form-group" style="margin-top: 40px;">
-                      <input type="submit" class="btn btn-success btn-user btn-block">
+                    <div style="padding-top: 10px;">
+                        {!!$errors->first('user',
+                            '<div class="alert alert-danger" style="margin-bottom: 0px;">
+                                Usuario y/o Contraseña Incorrecta
+                            </div>'
+                        )!!}
                     </div>
-
-                    <hr>
-                  </form>
-                </div>
-              </div>
-            </div>
+        
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
