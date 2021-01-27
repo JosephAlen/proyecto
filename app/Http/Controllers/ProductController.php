@@ -22,100 +22,76 @@ class ProductController extends Controller
         }
     }
     public function store(Request $request)
-    {   try {
+    {   
+        // try {
 
-            $request->validate([
-                'id_models' => 'required|numeric',
-                'name' => 'required|min:2',
-                'colour' => 'required',
-                'size' => 'required',
-                'sale_price' => 'required',
+        //     $request->validate([
+        //         'id_models' => 'required|numeric',
+        //         'name' => 'required|min:2',
+        //         'colour' => 'required',
+        //         'size' => 'required',
+        //         'sale_price' => 'required',
 
-            ]);
+        //     ]);
 
             $product = new Product();
             $product->name = $request->name;
             $product->code = $request->code;
             $product->colour = $request->colour;
-            $product->size = $request->size;
+            $product->brand = $request->brand;
+            $product->model = $request->model;
+            $product->serial = $request->serial;
             $product->description = $request->description;
-            $product->sale_price = $request->sale_price;
-            $product->stock = '0';
-            $product->switch = '1';
-            $product->id_models = $request->id_models;
+            $product->state = $request->estado;
+            $product->appointed = "";
+            $product->responsable = $request->responsable;
 
-            if($request->hasFile('imagen'))
+            if($request->hasFile('image'))
             {
-                $filenamewithExt = $request->file('imagen')->getClientOriginalName();
-                $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
-                $extension = $request->file('imagen')->guessClientExtension();
-                $fileNameToStore = time().'.'.$extension;
-                $path = $request->file('imagen')->storeAs('public/img',$fileNameToStore);
+                $file = $request->file('image');
+                $name = time()."_".$file->getClientOriginalName();
+                //Guardar en la Base de datos
+                $product->image = $name;
+                // Se alamacena en la carpeta field las imagenes de las canchas
+                $file->move(public_path().'/storage/img/',$name);
             }
-            else
-            {
-                $fileNameToStore="noimagen.jpg";
-            }
-
-            $product->image=$fileNameToStore;
 
             $product->save();
-            return Redirect::to("product")->with('success','producto creado exitosamente');
+            return redirect()->route("home")->with('status','Producto creado exitosamente');
 
 
-        } catch (ValidationException  $e) {
+        // } catch (ValidationException  $e) {
 
-            return Redirect::to("product")->with('error',$e->validator->errors());
-        };
+        //     return Redirect::to("product")->with('error',$e->validator->errors());
+        // };
 
     }
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        try {
-
-            $request->validate([
-                'id_models' => 'required',
-                'name' => 'required|min:2',
-                'colour' => 'required',
-                'size' => 'required',
-                'sale_price' => 'required',
-
-            ]);
-
-            $product = Product::findOrFail($request->id);
+            $product = Product::findOrFail($id);
             $product->name = $request->name;
             $product->code = $request->code;
             $product->colour = $request->colour;
-            $product->size = $request->size;
+            $product->brand = $request->brand;
+            $product->model = $request->model;
+            $product->serial = $request->serial;
             $product->description = $request->description;
-            $product->sale_price = $request->sale_price;
-            $product->stock = '0';
-            $product->switch = '1';
-            $product->id_models = $request->id_models;
+            $product->state = $request->estado;
+            $product->appointed = "";
+            $product->responsable = $request->responsable;
 
-            if($request->hasFile('imagen'))
+            if($request->hasFile('image'))
             {
-                if($product->image != 'noimagen.jpg')
-                {
-                    Storage::delete('public/img/'.$product->image);
-                }
-                $filenamewithExt = $request->file('imagen')->getClientOriginalName();
-                $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
-                $extension = $request->file('imagen')->guessClientExtension();
-                $fileNameToStore = time().'.'.$extension;
-                $path = $request->file('imagen')->storeAs('public/img',$fileNameToStore);
+                $file = $request->file('image');
+                $name = time()."_".$file->getClientOriginalName();
+                //Guardar en la Base de datos
+                $product->image = $name;
+                // Se alamacena en la carpeta field las imagenes de las canchas
+                $file->move(public_path().'/storage/img/',$name);
             }
-            else
-            {
-                $fileNameToStore = $product->image;
-            }
-            $product->image=$fileNameToStore;
 
-            $product->save();
-            return Redirect::to("product")->with('success','producto editado correctamente');
-        } catch (ValidationException $e) {
-            return Redirect::to("product")->with('error',$e->validator->errors());
-        }
+            $product->update();
+            return redirect()->route("home")->with('status','Producto actualizado exitosamente');
 
     }
 
@@ -126,13 +102,20 @@ class ProductController extends Controller
         {
             $product->switch = '0';
             $product->save();
-            return Redirect::to("product")->with('modificado exitosamente');
+            return Redirect::to("home")->with('modificado exitosamente');
         }
         else
         {
             $product->switch = '1';
             $product->save();
-            return Redirect::to("product")->with('modificado exitosamente');
+            return Redirect::to("home")->with('modificado exitosamente');
         }
+    }
+
+    public function stateProduct($id){
+        $product = Product::findOrFail($id);
+        $product->switch = $product->switch ?0:1;
+        $product->update();
+        return redirect()->route('home')->with('status','Se actualizo Estado con exito!');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -14,9 +15,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $ventasmes=`DB::select('SELECT monthname(v.date_sales) as mes, sum(v.total) as totalmes from sales v where v.state="Registrado" group by monthname(v.date_sales)')`;
+        $products = Product::get();
         
-        return view('home',["ventasmes"=>$ventasmes]);
+        return view('home',[
+        	'products' => $products
+        ]);
     
     }
 }

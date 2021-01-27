@@ -23,6 +23,12 @@ Route::group(['middleware' => ['auth']], function ()
 {
 	Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 	Route::get('/home', 'HomeController@index')->name('home');
+
+	// RUtas de producto
+	Route::get('/producto/estado/{id}','ProductController@stateProduct')->name('state.product');
+	Route::post('/producto/guardar','ProductController@store')->name('store.product');
+	Route::put('/producto/actualizar/{id}','ProductController@update')->name('update.product');
+
     Route::group(['middleware' => ['Vend']], function ()
     {
         Route::resource('consulta', 'ConsultaController');

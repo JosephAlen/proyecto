@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->string('brand', 50);
             $table->string('model', 50);
             $table->string('serial', 50);
-            $table->string('appointed');
+            $table->string('responsable');
             $table->string('description', 150)->nullable();
             $table->string('state', 50);
             $table->boolean('switch')->default(1);
