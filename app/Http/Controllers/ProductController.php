@@ -43,7 +43,6 @@ class ProductController extends Controller
             $product->serial = $request->serial;
             $product->description = $request->description;
             $product->state = $request->estado;
-            $product->appointed = "";
             $product->responsable = $request->responsable;
 
             if($request->hasFile('image'))
@@ -77,7 +76,6 @@ class ProductController extends Controller
             $product->serial = $request->serial;
             $product->description = $request->description;
             $product->state = $request->estado;
-            $product->appointed = "";
             $product->responsable = $request->responsable;
 
             if($request->hasFile('image'))
