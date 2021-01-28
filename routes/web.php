@@ -32,24 +32,10 @@ Route::group(['middleware' => ['auth']], function ()
 	Route::get('/consulta/producto','ProductController@queryProduct')->name('queryIndex.product');
 	Route::get('/producto-qr/{id}','ProductController@showQr')->name('product-qr');
 
-    Route::group(['middleware' => ['Vend']], function ()
-    {
-        Route::resource('consulta', 'ConsultaController');
-        Route::resource('productQuery', 'productQueryController');
-        Route::resource('models', 'ModelsController');
-		Route::resource('product', 'ProductController');
-    });
-    Route::group(['middleware' => ['Admin']], function ()
-    {
-    	Route::resource('models', 'ModelsController');
-		Route::resource('product', 'ProductController');
-		Route::resource('provider', 'ProviderController');
-		Route::resource('client', 'ClientController');
-		Route::resource('role', 'RoleController');
-		Route::resource('user', 'UserController');
-		Route::resource('purchase', 'PurchaseController');
-		Route::resource('sale', 'SaleController');
-		Route::get('/pdfCompra/{id}', 'PurchaseController@pdf')->name('compra_pdf');
-		Route::get('/pdfVenta/{id}', 'SaleController@pdf')->name('venta_pdf');
-    });
+    // Route::group(['middleware' => ['Vend']], function ()
+    // {
+    // });
+    // Route::group(['middleware' => ['Admin']], function ()
+    // {
+    // });
 });

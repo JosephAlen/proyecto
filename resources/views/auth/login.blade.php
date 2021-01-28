@@ -6,7 +6,7 @@
             <div class="panel-body" style="background-color: white;border-radius: 10px;">
                 <div class="mar-ver pad-btm" style="padding-bottom: 0px;">
 
-                    <img src="img/seguridad.png" alt="" style="width: 100%; height: 100%;">
+                    <img src="img/seguridad.jpeg" alt="" style="width: 100%; height: 100%;">
                     <h1 class="h3">Iniciar Sesión</h1>
 
                 </div>
