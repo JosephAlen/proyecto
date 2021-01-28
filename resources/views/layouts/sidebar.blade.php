@@ -61,28 +61,24 @@
 	
 	            <!--Menu list item-->
 	            <li>
-	                <a href="#">
-	                    <i class="demo-pli-home"></i>
-	                    <span class="menu-title">Dashboard</span>
-						<i class="arrow"></i>
-	                </a>
-	
-	                <!--Submenu-->
-	                <ul class="collapse">
-	                    <li><a href="index.html">Grafica</a></li>
-	                </ul>
-	            </li>
-	
-	
-	            <!--Menu list item-->
-	            <li>
-	                <a href="widgets.html">
+	                <a href="{{ route('home') }}">
 	                    <i class="demo-pli-gear"></i>
 	                    <span class="menu-title">
 							Productos
 						</span>
 	                </a>
 	            </li>
+
+                <!--Menu list item-->
+                <li>
+                    <a href="{{ route('queryIndex.product') }}">
+                        <i class="demo-pli-gear"></i>
+                        <span class="menu-title">
+                            Consultas
+                        </span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>

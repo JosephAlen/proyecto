@@ -28,6 +28,9 @@ Route::group(['middleware' => ['auth']], function ()
 	Route::get('/producto/estado/{id}','ProductController@stateProduct')->name('state.product');
 	Route::post('/producto/guardar','ProductController@store')->name('store.product');
 	Route::put('/producto/actualizar/{id}','ProductController@update')->name('update.product');
+	Route::get('/producto/imprimir-qr/{id}','ProductController@print')->name('print.product');
+	Route::get('/consulta/producto','ProductController@queryProduct')->name('queryIndex.product');
+	Route::get('/producto-qr/{id}','ProductController@showQr')->name('product-qr');
 
     Route::group(['middleware' => ['Vend']], function ()
     {

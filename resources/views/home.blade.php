@@ -70,6 +70,11 @@
                                     <button data-toggle="modal" class="btn btn-info btn-sm view-product" data-img="{{ $product->image }}">
                                         <i class="ion-eye"></i>
                                     </button>
+                                    <a href="{{route('print.product',$product->id)}}" target="_blank">
+                                        <button class="btn btn-warning btn-sm">
+                                            <i class="ion-printer"></i>
+                                        </button>
+                                    </a>
                                     <button type="submit" class="btn btn-primary btn-sm edit-product" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-code="{{ $product->code }}" data-colour="{{ $product->colour }}" data-brand="{{ $product->brand }}" data-model="{{ $product->model }}" data-serial="{{ $product->serial }}" data-description="{{ $product->description }}" data-state="{{ $product->state }}" data-image="{{ $product->image }}" data-responsable="{{ $product->responsable }}">
                                         <i class="glyphicon glyphicon-edit"></i>
                                     </button>
